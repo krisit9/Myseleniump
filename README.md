@@ -1,7 +1,4 @@
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
+
 
 class MatchingEngineTest
 {
@@ -10,19 +7,19 @@ class MatchingEngineTest
         IWebDriver driver = new ChromeDriver();
         driver.Navigate().GoToUrl("https://www.matchingengine.com/");
 
-        // Expand 'Modules' in the header
+        
         IWebElement modulesMenu = driver.FindElement(By.LinkText("Modules"));
         modulesMenu.Click();
 
-        // Click 'Repertoire Management Module'
+       
         IWebElement repertoireLink = driver.FindElement(By.LinkText("Repertoire Management Module"));
         repertoireLink.Click();
 
-        // Scroll to 'Additional Features' section
+        
         IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
         js.ExecuteScript("window.scrollBy(0, 1000);"); // Adjust scroll as needed
 
-        // Click 'Products Supported'
+       
         IWebElement productsSupported = driver.FindElement(By.PartialLinkText("Products Supported"));
         productsSupported.Click();
 
@@ -35,7 +32,6 @@ class MatchingEngineTest
             Console.WriteLine("- " + item.Text);
         }
 
-        // Example assertion (you can use a testing framework like NUnit for real tests)
         if (productItems.Count == 0)
         {
             Console.WriteLine("Assertion Failed: No supported products listed.");
